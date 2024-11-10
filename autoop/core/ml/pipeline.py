@@ -11,10 +11,10 @@ import numpy as np
 
 
 class Pipeline():
-    
-    def __init__(self, 
+
+    def __init__(self,
                  metrics: List[Metric],
-                 dataset: Dataset, 
+                 dataset: Dataset,
                  model: Model,
                  input_features: List[Feature],
                  target_feature: Feature,
@@ -98,7 +98,11 @@ Pipeline(
     def _train(self):
         X = self._compact_vectors(self._train_X)
         Y = self._train_y
-        self._model.fit(X, Y)
+        self._metrics_train = []
+        fitted = self._model.fit(X, Y)
+        for metric in self._metrics:
+            result = metric.evaluate(fitted)
+            self._metrics_train.append((metric, result))
 
     def _evaluate(self):
         X = self._compact_vectors(self._test_X)
@@ -116,9 +120,7 @@ Pipeline(
         self._train()
         self._evaluate()
         return {
-            "metrics": self._metrics_results,
+            "training metrics": self._metrics_train,
+            "evaluation metrics": self._metrics_results,
             "predictions": self._predictions,
         }
-        
-
-    

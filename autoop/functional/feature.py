@@ -1,4 +1,3 @@
-
 from typing import List
 from autoop.core.ml.dataset import Dataset
 from autoop.core.ml.feature import Feature
@@ -7,7 +6,7 @@ from autoop.core.ml.feature import Feature
 def detect_feature_types(dataset: Dataset) -> List[Feature]:
     """
     Takes features from a dataset and categorize them
-    as either numerical or categorical
+    as either numerical or categorical.
 
     Assumption:
         -only categorical and numerical features and no NaN values.

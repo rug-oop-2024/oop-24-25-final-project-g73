@@ -4,7 +4,7 @@ import base64
 
 class Artifact(BaseModel):
     """
-    Represents a ML artifact, such as a dataset or model
+    Represents a ML artifact, such as a dataset or model.
 
     Attributes
     ----------
@@ -35,7 +35,7 @@ class Artifact(BaseModel):
     def id(self) -> str:
         """
         Generates a unique ID for the artifact
-        based on the asset_path and the version
+        based on the asset_path and the version.
 
         Returns
         -------
