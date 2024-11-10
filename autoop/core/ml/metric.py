@@ -62,9 +62,9 @@ class Metric(ABC):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -88,9 +88,9 @@ class MeanSquaredError(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -115,9 +115,9 @@ class RootMeanSquaredError(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -142,9 +142,9 @@ class RSquared(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -175,9 +175,9 @@ class Accuracy(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -203,9 +203,9 @@ class Precision(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns
@@ -236,9 +236,9 @@ class Recall(Metric):
 
         Parameters
         ----------
-        y_truth : array-like
+        y_truth : np.ndarray
             Ground truth values
-        y_pred : array-like
+        y_pred : np.ndarray
             Predicted values
 
         Returns

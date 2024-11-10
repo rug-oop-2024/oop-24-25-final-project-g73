@@ -5,7 +5,8 @@ import io
 
 
 class Dataset(Artifact):
-    """A class to represent an ML dataset"""
+    """A class to represent an ML dataset."""
+
     def __init__(self, *args, **kwargs):
         super().__init__(type="dataset", *args, **kwargs)
 
@@ -21,12 +22,12 @@ class Dataset(Artifact):
         )
 
     def read(self) -> pd.DataFrame:
-        """ Read data from a given path """
+        """Read data from a given path."""
         bytes = super().read()
         csv = bytes.decode()
         return pd.read_csv(io.StringIO(csv))
 
     def save(self, data: pd.DataFrame) -> bytes:
-        """ Save data to a given path """
+        """Save data to a given path."""
         bytes = data.to_csv(index=False).encode()
         return super().save(bytes)
