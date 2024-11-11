@@ -1,12 +1,34 @@
+"""
+feature.py
 
+Defines the `Feature` class, representing individual features
+within a dataset.
+The feature can be either numerical or categorical.
+
+Classes
+-------
+Feature
+    Represents a single feature within a dataset.
+"""
 from pydantic import BaseModel, Field
 from typing import Literal
 import numpy as np
 
-from autoop.core.ml.dataset import Dataset
 
 class Feature(BaseModel):
-    # attributes here
+    """
+    Represents a feature in a dataset
 
-    def __str__(self):
-        raise NotImplementedError("To be implemented.")
+    Attributes
+    ----------
+    name : str
+        The name of the feature
+    type : Literal["numerical", "categorical"]
+        The type of the feature, either categorical or numerical
+    """
+    name: str = Field(title="Name of feature", default=None)
+    type: Literal["numerical", "categorical"] = Field(title="Type of feature",
+                                                      default=None)
+
+    def __str__(self) -> str:
+        return f"Feature name={self.name}, type={self.type}"
