@@ -1,3 +1,16 @@
+"""
+model.py
+
+This module defines the abstract `Model` base class
+for machine learning models, providing a common interface
+for training and prediction that other models inherit.
+
+Classes
+-------
+Model
+    Abstract base class for all models,
+    defining the methods `fit` and `predict`.
+"""
 from abc import ABC, abstractmethod
 # from autoop.core.ml.artifact import Artifact
 import numpy as np
@@ -8,7 +21,7 @@ import numpy as np
 class Model(ABC):
     """Base model from which all other models will inherit."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the base model."""
         self._parameters: dict = {}
 
@@ -19,10 +32,10 @@ class Model(ABC):
 
         Parameters
         ----------
-            observations : np.ndarray
-                data used to train the model
-            ground_truth : np.ndarray
-                labels or values of each of the observations
+        observations : np.ndarray
+            Data used to train the model.
+        ground_truth : np.ndarray
+            Labels or values of each of the observations.
 
         Returns
         -------
@@ -33,15 +46,16 @@ class Model(ABC):
     @abstractmethod
     def predict(self, observations: np.ndarray) -> np.ndarray:
         """
-        Do predictions based on observations.
+        Make predictions based on observations.
 
         Parameters
         ----------
-            observations : np.ndarray
-                data used to make a prediction
+        observations : np.ndarray
+            Data used to make predictions.
 
         Returns
         -------
-            labels or values predicted for each of the observations
+        np.ndarray
+            Predicted labels or values for each of the observations.
         """
         pass

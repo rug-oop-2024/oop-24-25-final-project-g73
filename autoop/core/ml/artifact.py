@@ -1,5 +1,19 @@
+"""
+artifact.py
+
+This module defines the `Artifact` class,
+representing machine learning artifacts such as datasets or models.
+The class provides methods for saving and reading data.
+
+Classes
+-------
+Artifact
+    Represents an ML artifact, such as a dataset or model.
+"""
 from pydantic import BaseModel, Field
 import base64
+import pandas as pd
+import io
 
 
 class Artifact(BaseModel):
@@ -44,4 +58,32 @@ class Artifact(BaseModel):
         """
         encoded_path = base64.b64encode(
             self.asset_path.encode()).decode()
-        return f"{encoded_path}:{self.version}"
+        return f"{encoded_path}.{self.version}"
+
+    def read(self) -> pd.DataFrame:
+        """
+        Read the dataset from the given encoded CSV data.
+
+        Returns
+        -------
+        pd.DataFrame
+            The dataset as a pandas DataFrame.
+        """
+        csv_string = self.data.decode()
+        return pd.read_csv(io.StringIO(csv_string))
+
+    def save(self, data: pd.DataFrame) -> None:
+        """
+        Encodes and saves the given DataFrame as
+        CSV bytes into `self.data`.
+
+        Parameters
+        ----------
+        data : pd.DataFrame
+            The DataFrame to be saved as CSV bytes.
+
+        Returns
+        -------
+            None
+        """
+        self.data = data.to_csv(index=False).encode()

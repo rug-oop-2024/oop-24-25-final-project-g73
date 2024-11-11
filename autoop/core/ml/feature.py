@@ -1,4 +1,15 @@
+"""
+feature.py
 
+Defines the `Feature` class, representing individual features
+within a dataset.
+The feature can be either numerical or categorical.
+
+Classes
+-------
+Feature
+    Represents a single feature within a dataset.
+"""
 from pydantic import BaseModel, Field
 from typing import Literal
 import numpy as np
