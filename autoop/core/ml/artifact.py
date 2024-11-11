@@ -36,6 +36,7 @@ class Artifact(BaseModel):
         Tags for categorizing the artifact
     """
 
+    name: str = Field(title="Name")
     asset_path: str = Field(title="Path to the asset file")
     version: str = Field(title="Version")
     data: bytes = Field(title="Binary state data")

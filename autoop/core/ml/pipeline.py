@@ -184,7 +184,8 @@ Pipeline(
         self._register_artifact(target_feature_name, artifact)
         input_results = preprocess_features(
             self._input_features, self._dataset)
-        for (feature_name, data, artifact) in input_results: self._register_artifact(feature_name, artifact)
+        for (feature_name, data, artifact) in input_results:
+            self._register_artifact(feature_name, artifact)
         # Get the input vectors and output vector,
         # sort by feature name for consistency
         self._output_vector = target_data
@@ -272,6 +273,6 @@ Pipeline(
         self._evaluate()
         return {
             "training metrics": self._metrics_train,
-            "evaluation metrics": self._metrics_results,
+            "testing metrics": self._metrics_results,
             "predictions": self._predictions,
         }
